@@ -1,0 +1,12 @@
+.inputRounded {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 12px;
+  outline: none;
+}
+
+.inputRounded::placeholder {
+  color: #888;
+  opacity: 1;
+}

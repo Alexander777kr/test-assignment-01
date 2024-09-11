@@ -1,0 +1,85 @@
+.btn {
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btnLarge {
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.btnMedium {
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.btnMediumLarge {
+  padding: 14px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.btnSmall {
+  padding: 5px 10px;
+  font-size: 10px;
+  width: 25%;
+}
+
+.primary {
+  background-color: #297eff;
+  color: #ffffff;
+  border: none;
+}
+
+.transparent:focus {
+  outline: none;
+}
+
+.transparent::-moz-focus-inner {
+  border: 0;
+}
+
+.badge {
+  color: #5b6887;
+  background-color: #293148;
+  border: 1px solid #293148;
+}
+
+.info {
+  background-color: #eef5ff;
+  color: #2b7dfc;
+  border: none;
+}
+
+.outline {
+  outline: 1px solid black;
+  border: none;
+  background-color: #ffffff;
+}
+
+.warning {
+  background-color: #fd6d15;
+  color: #ffffff;
+  border: none;
+}
+
+.dark {
+  background-color: #283047;
+  color: #ffffff;
+  border: none;
+}
+
+.ghost {
+  background-color: transparent;
+  color: black;
+  border: none;
+}

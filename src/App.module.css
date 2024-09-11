@@ -1,0 +1,11 @@
+.globalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #f1f3f4;
+  padding: 0;
+}

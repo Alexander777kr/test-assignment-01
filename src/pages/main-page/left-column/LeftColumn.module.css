@@ -1,0 +1,47 @@
+.leftColumn {
+  width: 300px;
+  background-color: #4bdf3d;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.highlight {
+  background-color: #2b7dfc;
+  color: black;
+  padding: 0.2em;
+  border-radius: 15%;
+}
+
+.headingOne {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.headingTwo {
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.accordions {
+  margin-top: 2em;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.gridItem {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}

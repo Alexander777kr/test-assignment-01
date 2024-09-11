@@ -1,0 +1,22 @@
+.card {
+  border-radius: 20px;
+  margin-bottom: 5px;
+}
+.cardContainer {
+  background: #171d2d;
+  color: #ffffff;
+  padding: 5px;
+}
+
+.cardMainLayoutContainer {
+  background: #ffffff;
+  color: #51545f;
+}
+
+.classNameHeadingAlignment {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+}

@@ -1,0 +1,45 @@
+.clientHeading {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.profileAvatar {
+  width: 25px;
+  height: 25px;
+}
+
+.profileInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+}
+
+.logout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnMargin {
+  margin-left: 25px;
+}
+
+.calendar {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.rightArrow {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.headingClientName {
+  font-weight: 300;
+}

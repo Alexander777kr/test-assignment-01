@@ -1,0 +1,7 @@
+.rightColumn {
+  flex-grow: 1;
+  max-width: 900px;
+  background-color: #c54a4a;
+  overflow: auto;
+  padding: 20px;
+}

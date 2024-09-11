@@ -1,0 +1,15 @@
+.linkContainer {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #63718f;
+}
+
+.link {
+  color: #63718f;
+  text-decoration: none;
+}

@@ -1,0 +1,35 @@
+.accordion {
+  border: 1px solid #283047;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  background-color: #283047;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accordionIcon {
+  margin-right: 0.5em;
+}
+
+.accordionTitle {
+  flex-grow: 1;
+}
+
+.accordionToggle {
+  color: #63718f;
+  background-color: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+}
+
+.accordionContent {
+  padding: 1em;
+}

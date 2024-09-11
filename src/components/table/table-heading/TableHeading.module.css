@@ -1,0 +1,71 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.headingOne {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.faBook {
+  margin-right: 10px;
+}
+
+.instructions {
+  margin-left: 20px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.cardCategory {
+  padding: 22px;
+}
+
+.cardWithInput {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.spacing {
+  margin-right: 10px;
+}
+
+.categoryLabel {
+  display: block;
+  color: #80878b;
+}
+
+.exportIcon {
+  margin-right: 8px;
+}
+
+.controlForm {
+  margin-top: 20px;
+  border-top: 1px solid #dbdfe2;
+  border-bottom: 1px solid #dbdfe2;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.uploadIcons {
+  font-size: 25px;
+  margin-right: 10px;
+}
