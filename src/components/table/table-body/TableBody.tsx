@@ -16,6 +16,7 @@ import {
   type EditableCellProps,
   type TableBodyProps,
 } from './types';
+import toast from 'react-hot-toast';
 
 function isIntegerWithoutDotAtEnd(value: string) {
   return /^-?\d+$/.test(value);
@@ -23,7 +24,6 @@ function isIntegerWithoutDotAtEnd(value: string) {
 
 const EditableContext = createContext<FormInstance<FormValues> | null>(null);
 
-// EditableRow for managing form context
 const EditableRow = ({ ...props }) => {
   const [form] = Form.useForm();
   return (
@@ -35,7 +35,6 @@ const EditableRow = ({ ...props }) => {
   );
 };
 
-// EditableCell for handling inline editing
 const EditableCell = ({
   title,
   editable,
@@ -43,6 +42,7 @@ const EditableCell = ({
   dataIndex,
   record,
   handleSave,
+  setToggleFiltering,
   ...restProps
 }: EditableCellProps) => {
   const [editing, setEditing] = useState(false);
@@ -72,6 +72,16 @@ const EditableCell = ({
         ...record,
         ...values,
       });
+      setToggleFiltering(false);
+      toast.success('Ячейка изменена', {
+        duration: 4000,
+      });
+      toast.error(
+        "Фильтрация данных приостановлена в связи с изменением данных. Для сохранения данных нажмите 'Изменить данные'. Для повторного отображения результатов без сохранения нажмите на 'Загрузить данные из csv'",
+        {
+          duration: 25000,
+        }
+      );
     } catch (errInfo) {
       console.log('Save failed:', errInfo);
     }
@@ -80,7 +90,6 @@ const EditableCell = ({
   let childNode = children;
 
   if (editable) {
-    // Определение правил валидации для числовых полей
     const validationRules =
       dataIndex === 'barcode' ||
       dataIndex === 'available' ||
@@ -126,8 +135,8 @@ const EditableCell = ({
       >
         <Input
           ref={inputRef as unknown as LegacyRef<InputRef> | undefined}
-          onPressEnter={save}
-          onBlur={save}
+          onPressEnter={() => save()}
+          onBlur={() => save()}
         />
       </Form.Item>
     ) : (
@@ -146,60 +155,55 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 
-// Main TableBody component with editable rows
-const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
+const TableBody = ({
+  dataSource,
+  setDataSource,
+  setToggleFiltering,
+}: TableBodyProps) => {
   const defaultColumns = [
     {
       title: 'Баркод',
       dataIndex: 'barcode',
       editable: true,
       sorter: (a: Column, b: Column) => a.barcode.localeCompare(b.barcode),
-      sortDirections: ['descend'],
     },
     {
       title: 'Предмет',
       dataIndex: 'item',
       sorter: (a: Column, b: Column) => a.item.localeCompare(b.item),
-      sortDirections: ['descend'],
     },
     {
       title: 'Артикул поставщика',
       dataIndex: 'supplierCode',
       sorter: (a: Column, b: Column) =>
         a.supplierCode.localeCompare(b.supplierCode),
-      sortDirections: ['descend'],
     },
     {
       title: 'Размер',
       dataIndex: 'size',
       sorter: (a: Column, b: Column) => a.size.localeCompare(b.size),
-      sortDirections: ['descend'],
     },
     {
       title: 'Доступно к заказу',
       dataIndex: 'available',
       editable: true,
       sorter: (a: Column, b: Column) => a.available - b.available,
-      sortDirections: ['descend'],
     },
     {
       title: 'Товары в пути (заказы и возвраты)',
       dataIndex: 'inTransit',
       editable: true,
       sorter: (a: Column, b: Column) => a.inTransit - b.inTransit,
-      sortDirections: ['descend'],
     },
     {
       title: 'Итого кол-во товаров',
       dataIndex: 'total',
       sorter: (a: Column, b: Column) => a.total - b.total,
-      sortDirections: ['descend'],
       render: (_: any, record: Column) =>
         Number(record.available) + Number(record.inTransit),
     },
   ];
 
-  // Handle saving cell data and updating both row and column if needed
   const handleSave = (row: Column) => {
     const newData = dataSource.map((item) => {
       if (item.key === row.key) {
@@ -210,7 +214,6 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
           total: Number(row.available) + Number(row.inTransit),
         };
       }
-      // Возвращаем неизмененные элементы
       return item;
     });
     setDataSource(newData);
@@ -226,11 +229,12 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
     },
     body: {
       row: EditableRow,
-      cell: EditableCell,
+      cell: (props: EditableCellProps) => (
+        <EditableCell setToggleFiltering={setToggleFiltering} {...props} />
+      ),
     },
   };
 
-  // Mapping columns to handle editable functionality
   const columns = defaultColumns.map((col) => {
     if (!col.editable) {
       return col;
@@ -263,6 +267,7 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
         locale={{
           emptyText:
             'Нет данных для отображения. Нажмите "Загрузить данные из csv"',
+          triggerAsc: 'Сортировать по возрастанию',
           triggerDesc: 'Сортировать по убыванию',
           cancelSort: 'Отмена сортировки',
         }}

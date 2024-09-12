@@ -8,6 +8,8 @@ export interface ButtonProps {
   children: ReactNode;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  disabled?: boolean;
+  title?: string;
 }
 
 export type ButtonStyle = 'primary' | 'warning' | 

@@ -26,6 +26,7 @@ interface TableHeading {
   setFilterFields: Dispatch<React.SetStateAction<FilterFields>>;
   dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
+  toggleFiltering: boolean;
 }
 
 export default function TableHeading({
@@ -34,6 +35,7 @@ export default function TableHeading({
   setFilterFields,
   dataSource,
   setDataSource,
+  toggleFiltering,
 }: TableHeading) {
   const [barcode, setBarcode] = useState('');
   const [articleNumber, setArticleNumber] = useState('');
@@ -68,6 +70,22 @@ export default function TableHeading({
     } else {
       toast.error(
         "Нет данных для формирования фильтрации результатов. Нажмите на кнопку 'Загрузить данные из csv'"
+      );
+    }
+  }
+
+  function changeData() {
+    if (dataSource.length > 0) {
+      loadDataFromJSON();
+      toast.success('Данные изменены', {
+        duration: 4000,
+      });
+    } else {
+      toast.error(
+        "Данные в таблице отсутствуют, они не могут быть изменены. Для загрузки данных нажмите на кнопку 'Загрузить данные из csv'",
+        {
+          duration: 6000,
+        }
       );
     }
   }
@@ -172,7 +190,17 @@ export default function TableHeading({
         </Card>
       </div>
       <div className={styles.header}>
-        <Button onClick={formTable} styleType={'primary'} size={'mediumLarge'}>
+        <Button
+          disabled={!toggleFiltering}
+          title={
+            !toggleFiltering
+              ? 'Сохраните данные для продолжения фильтрации'
+              : undefined
+          }
+          onClick={formTable}
+          styleType={'primary'}
+          size={'mediumLarge'}
+        >
           Сформировать
         </Button>
         <Button
@@ -198,6 +226,7 @@ export default function TableHeading({
             leftIcon={<MdAssignmentAdd className={styles.uploadIcons} />}
             styleType={'ghost'}
             size={'medium'}
+            onClick={changeData}
           >
             Изменить данные
           </Button>

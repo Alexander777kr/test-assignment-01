@@ -17,6 +17,7 @@ export default function Table() {
     size: '',
     category: '',
   });
+  const [toggleFiltering, setToggleFiltering] = useState(false);
 
   let filteredDataSource = dataSource;
 
@@ -57,9 +58,11 @@ export default function Table() {
       const data = await response.json();
       setDataSource(data as Column[]);
       toast.success('Данные успешно загружены в таблицу');
+      setToggleFiltering(true);
     } catch (error) {
       console.error('Failed to load data:', error);
       toast.error('Ошибка при загрузке данных. Обратитесь к администратору');
+      setToggleFiltering(false);
     } finally {
       setIsLoading(false);
     }
@@ -97,6 +100,7 @@ export default function Table() {
         exportToCSV={exportToCSV}
         setFilterFields={setFilterFields}
         setDataSource={setDataSource}
+        toggleFiltering={toggleFiltering}
       />
       {isLoading ? (
         <SpinnerLayout />
@@ -104,6 +108,7 @@ export default function Table() {
         <TableBody
           dataSource={filteredDataSource}
           setDataSource={setDataSource}
+          setToggleFiltering={setToggleFiltering}
         />
       )}
     </div>

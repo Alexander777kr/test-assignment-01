@@ -19,9 +19,11 @@ export type EditableCellProps = {
   dataIndex: string;
   record: any;
   handleSave: (row: Column) => void;
+  setToggleFiltering: Dispatch<SetStateAction<boolean>>;
 } & HTMLAttributes<HTMLDivElement>;
 
 export interface TableBodyProps {
   dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
+  setToggleFiltering: Dispatch<SetStateAction<boolean>>;
 }
