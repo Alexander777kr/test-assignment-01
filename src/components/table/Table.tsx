@@ -92,6 +92,7 @@ export default function Table() {
   return (
     <div className={styles.table}>
       <TableHeading
+        dataSource={dataSource}
         loadDataFromJSON={loadDataFromJSON}
         exportToCSV={exportToCSV}
         setFilterFields={setFilterFields}

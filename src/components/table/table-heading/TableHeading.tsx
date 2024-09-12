@@ -24,6 +24,7 @@ interface TableHeading {
   loadDataFromJSON: () => void;
   exportToCSV: () => void;
   setFilterFields: Dispatch<React.SetStateAction<FilterFields>>;
+  dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
 }
 
@@ -31,6 +32,7 @@ export default function TableHeading({
   loadDataFromJSON,
   exportToCSV,
   setFilterFields,
+  dataSource,
   setDataSource,
 }: TableHeading) {
   const [barcode, setBarcode] = useState('');
@@ -39,20 +41,49 @@ export default function TableHeading({
   const [category, setCategory] = useState('');
 
   function formTable() {
-    setFilterFields({
-      barcode,
-      articleNumber,
-      size,
-      category,
-    });
-    toast.success('Данные в таблице отфильтрованы по критериям');
+    if (dataSource.length > 0) {
+      setFilterFields({
+        barcode,
+        articleNumber,
+        size,
+        category,
+      });
+      if (
+        barcode === '' &&
+        articleNumber === '' &&
+        size === '' &&
+        category === ''
+      ) {
+        toast.success(
+          'Данные в таблице показываются полностью, фильтры отсутствуют',
+          {
+            duration: 4000,
+          }
+        );
+      } else {
+        toast.success('Данные в таблице отфильтрованы по критериям', {
+          duration: 4000,
+        });
+      }
+    } else {
+      toast.error(
+        "Нет данных для формирования фильтрации результатов. Нажмите на кнопку 'Загрузить данные из csv'"
+      );
+    }
   }
 
-  const result: Column[] = [];
-
   function clearData() {
-    setDataSource(result);
-    toast.error('Таблица очищена от данных');
+    const result: Column[] = [];
+    if (dataSource.length > 0) {
+      setDataSource(result);
+      toast.success('Таблица очищена от данных', {
+        duration: 4000,
+      });
+    } else {
+      toast.error(
+        'Данные в таблице отсутствуют, таблица не может быть очищена'
+      );
+    }
   }
 
   return (
