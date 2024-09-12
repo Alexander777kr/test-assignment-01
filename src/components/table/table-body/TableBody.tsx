@@ -103,7 +103,7 @@ const EditableCell = ({
           margin: 0,
         }}
         name={dataIndex}
-        rules={validationRules as Partial<Rule[]>}
+        rules={validationRules as any}
       >
         <Input
           ref={inputRef as unknown as LegacyRef<InputRef> | undefined}
