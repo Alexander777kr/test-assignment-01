@@ -9,7 +9,9 @@ import { CgExport } from 'react-icons/cg';
 import { RiFileUploadFill } from 'react-icons/ri';
 import { MdAssignmentAdd } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { type Column } from '../../../utils/types';
+import toast from 'react-hot-toast';
 
 type FilterFields = {
   barcode: string;
@@ -21,13 +23,15 @@ type FilterFields = {
 interface TableHeading {
   loadDataFromJSON: () => void;
   exportToCSV: () => void;
-  setFilterFields: React.Dispatch<React.SetStateAction<FilterFields>>;
+  setFilterFields: Dispatch<React.SetStateAction<FilterFields>>;
+  setDataSource: Dispatch<SetStateAction<Column[]>>;
 }
 
 export default function TableHeading({
   loadDataFromJSON,
   exportToCSV,
   setFilterFields,
+  setDataSource,
 }: TableHeading) {
   const [barcode, setBarcode] = useState('');
   const [articleNumber, setArticleNumber] = useState('');
@@ -41,6 +45,14 @@ export default function TableHeading({
       size,
       category,
     });
+    toast.success('Данные в таблице отфильтрованы по критериям');
+  }
+
+  const result: Column[] = [];
+
+  function clearData() {
+    setDataSource(result);
+    toast.error('Таблица очищена от данных');
   }
 
   return (
@@ -164,6 +176,7 @@ export default function TableHeading({
             rightIcon={<RxCross2 className={styles.uploadIcons} />}
             styleType={'ghost'}
             size={'medium'}
+            onClick={clearData}
           >
             Очистить
           </Button>

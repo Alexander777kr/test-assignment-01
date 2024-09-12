@@ -4,6 +4,7 @@ import Button from '../button/Button';
 import { CiCircleRemove } from 'react-icons/ci';
 import styles from './Card.module.css';
 import { NumberOfHeadings } from '../../utils/types';
+import toast from 'react-hot-toast';
 
 interface CardProps extends HTMLProps<HTMLElement> {
   level?: NumberOfHeadings;
@@ -27,7 +28,15 @@ export default function Card({
   const [showMenu, setShowMenu] = useState(true);
 
   function handleClick() {
-    setShowMenu((prev) => !prev);
+    setShowMenu((prev) => {
+      const result = !prev;
+      if (result === true) {
+        toast.success('Меню ФИН Контроля открыто!');
+      } else {
+        toast.success('Меню ФИН Контроля скрыто!');
+      }
+      return result;
+    });
   }
   return (
     <div

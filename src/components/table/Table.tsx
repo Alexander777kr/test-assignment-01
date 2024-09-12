@@ -6,6 +6,7 @@ import { saveAs } from 'file-saver';
 import Papa from 'papaparse';
 import { type Column } from '../../utils/types';
 import SpinnerLayout from '../spinner-layout/SpinnerLayout';
+import toast from 'react-hot-toast';
 
 export default function Table() {
   const [dataSource, setDataSource] = useState<Column[]>([]);
@@ -55,8 +56,10 @@ export default function Table() {
       const response = await fetch('/data.json');
       const data = await response.json();
       setDataSource(data as Column[]);
+      toast.success('Данные успешно загружены в таблицу');
     } catch (error) {
       console.error('Failed to load data:', error);
+      toast.error('Ошибка при загрузке данных. Обратитесь к администратору');
     } finally {
       setIsLoading(false);
     }
@@ -64,9 +67,26 @@ export default function Table() {
 
   // Function to export data to CSV
   const exportToCSV = () => {
-    const csv = Papa.unparse(filteredDataSource);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, 'data.csv');
+    if (dataSource.length !== 0) {
+      const csv = Papa.unparse(filteredDataSource);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      saveAs(blob, 'data.csv');
+      toast.loading(
+        'Подождите, данные с таблицы сохраняются как csv файл на диск...',
+        {
+          duration: 7000,
+        }
+      );
+      setTimeout(() => {
+        toast.success('Данные успешно загружены на диск как файл data.csv', {
+          duration: 4000,
+        });
+      }, 7000);
+    } else {
+      toast.error(
+        "Нет данных для сохранения. Нажмите на кнопку 'Загрузить данные из csv'"
+      );
+    }
   };
 
   return (
@@ -75,6 +95,7 @@ export default function Table() {
         loadDataFromJSON={loadDataFromJSON}
         exportToCSV={exportToCSV}
         setFilterFields={setFilterFields}
+        setDataSource={setDataSource}
       />
       {isLoading ? (
         <SpinnerLayout />
