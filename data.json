@@ -1,0 +1,202 @@
+[
+  {
+    "key": "0",
+    "barcode": "2037618545904",
+    "item": "Одежда",
+    "supplierCode": "Кардиган",
+    "size": "50-60",
+    "available": 6,
+    "inTransit": 40,
+    "total": 46
+  },
+  {
+    "key": "1",
+    "barcode": "2037618545905",
+    "item": "Обувь",
+    "supplierCode": "Туфли",
+    "size": "40-45",
+    "available": 15,
+    "inTransit": 30,
+    "total": 45
+  },
+  {
+    "key": "2",
+    "barcode": "2037618545906",
+    "item": "Аксессуары",
+    "supplierCode": "Сумки",
+    "size": "Н/Д",
+    "available": 12,
+    "inTransit": 20,
+    "total": 32
+  },
+  {
+    "key": "3",
+    "barcode": "2037618545907",
+    "item": "Одежда",
+    "supplierCode": "Платье",
+    "size": "36-42",
+    "available": 8,
+    "inTransit": 25,
+    "total": 33
+  },
+  {
+    "key": "4",
+    "barcode": "2037618545908",
+    "item": "Обувь",
+    "supplierCode": "Ботинки",
+    "size": "42-44",
+    "available": 10,
+    "inTransit": 22,
+    "total": 32
+  },
+  {
+    "key": "5",
+    "barcode": "2037618545909",
+    "item": "Аксессуары",
+    "supplierCode": "Ремни",
+    "size": "Н/Д",
+    "available": 20,
+    "inTransit": 15,
+    "total": 35
+  },
+  {
+    "key": "6",
+    "barcode": "2037618545910",
+    "item": "Одежда",
+    "supplierCode": "Куртка",
+    "size": "44-50",
+    "available": 5,
+    "inTransit": 12,
+    "total": 17
+  },
+  {
+    "key": "7",
+    "barcode": "2037618545911",
+    "item": "Обувь",
+    "supplierCode": "Кроссовки",
+    "size": "38-42",
+    "available": 18,
+    "inTransit": 28,
+    "total": 46
+  },
+  {
+    "key": "8",
+    "barcode": "2037618545912",
+    "item": "Аксессуары",
+    "supplierCode": "Шарфы",
+    "size": "Н/Д",
+    "available": 25,
+    "inTransit": 10,
+    "total": 35
+  },
+  {
+    "key": "9",
+    "barcode": "2037618545913",
+    "item": "Одежда",
+    "supplierCode": "Рубашка",
+    "size": "38-42",
+    "available": 12,
+    "inTransit": 18,
+    "total": 30
+  },
+  {
+    "key": "10",
+    "barcode": "2037618545914",
+    "item": "Обувь",
+    "supplierCode": "Кеды",
+    "size": "36-40",
+    "available": 22,
+    "inTransit": 20,
+    "total": 42
+  },
+  {
+    "key": "11",
+    "barcode": "2037618545915",
+    "item": "Аксессуары",
+    "supplierCode": "Очки",
+    "size": "Н/Д",
+    "available": 8,
+    "inTransit": 25,
+    "total": 33
+  },
+  {
+    "key": "12",
+    "barcode": "2037618545916",
+    "item": "Одежда",
+    "supplierCode": "Шорты",
+    "size": "42-46",
+    "available": 7,
+    "inTransit": 14,
+    "total": 21
+  },
+  {
+    "key": "13",
+    "barcode": "2037618545917",
+    "item": "Обувь",
+    "supplierCode": "Тапочки",
+    "size": "37-41",
+    "available": 30,
+    "inTransit": 18,
+    "total": 48
+  },
+  {
+    "key": "14",
+    "barcode": "2037618545918",
+    "item": "Аксессуары",
+    "supplierCode": "Шапки",
+    "size": "Н/Д",
+    "available": 15,
+    "inTransit": 8,
+    "total": 23
+  },
+  {
+    "key": "15",
+    "barcode": "2037618545919",
+    "item": "Одежда",
+    "supplierCode": "Жакет",
+    "size": "40-44",
+    "available": 6,
+    "inTransit": 10,
+    "total": 16
+  },
+  {
+    "key": "16",
+    "barcode": "2037618545920",
+    "item": "Обувь",
+    "supplierCode": "Сандалии",
+    "size": "39-43",
+    "available": 14,
+    "inTransit": 24,
+    "total": 38
+  },
+  {
+    "key": "17",
+    "barcode": "2037618545921",
+    "item": "Аксессуары",
+    "supplierCode": "Рюкзаки",
+    "size": "Н/Д",
+    "available": 12,
+    "inTransit": 20,
+    "total": 32
+  },
+  {
+    "key": "18",
+    "barcode": "2037618545922",
+    "item": "Одежда",
+    "supplierCode": "Топ",
+    "size": "34-38",
+    "available": 10,
+    "inTransit": 15,
+    "total": 25
+  },
+  {
+    "key": "19",
+    "barcode": "2037618545923",
+    "item": "Обувь",
+    "supplierCode": "Лоферы",
+    "size": "41-45",
+    "available": 20,
+    "inTransit": 12,
+    "total": 32
+  }
+]

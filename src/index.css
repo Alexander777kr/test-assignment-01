@@ -11,3 +11,32 @@
 body {
   margin: 0;
 }
+
+/* Стилизация полос прокрутки для Webkit браузеров (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Ширина полосы прокрутки */
+}
+
+::-webkit-scrollbar-track {
+  background: #fff; /* Цвет фона области прокрутки */
+  border-radius: 10px; /* Закругление углов области прокрутки */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #297efb; /* Цвет бегунка */
+  border-radius: 10px; /* Закругление углов бегунка */
+}
+
+/* Стилизация полос прокрутки для Firefox */
+.scrollable-element {
+  scrollbar-width: thin; /* Тонкая полоса прокрутки */
+  scrollbar-color: #297efb #fff; /* Цвет бегунка и фона области прокрутки */
+}
+
+.ant-table-tbody > tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Белый цвет для нечетных строк */
+}
+
+.ant-table-tbody > tr:nth-child(even) {
+  background-color: #e0e0e0; /* Серый цвет для четных строк */
+}

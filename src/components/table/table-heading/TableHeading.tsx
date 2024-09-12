@@ -12,7 +12,15 @@ import { RiFileUploadFill } from 'react-icons/ri';
 import { MdAssignmentAdd } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
 
-export default function TableHeading() {
+interface TableHeading {
+  loadDataFromJSON: () => void;
+  exportToCSV: () => void;
+}
+
+export default function TableHeading({
+  loadDataFromJSON,
+  exportToCSV,
+}: TableHeading) {
   return (
     <header>
       <div className={styles.header}>
@@ -79,6 +87,7 @@ export default function TableHeading() {
           leftIcon={<CgExport className={styles.exportIcon} />}
           styleType={ButtonStyle.Dark}
           size={ButtonSize.MediumLarge}
+          onClick={exportToCSV}
         >
           Экспорт
         </Button>
@@ -89,6 +98,7 @@ export default function TableHeading() {
             leftIcon={<RiFileUploadFill className={styles.uploadIcons} />}
             styleType={ButtonStyle.Ghost}
             size={ButtonSize.Medium}
+            onClick={loadDataFromJSON}
           >
             Загрузить данные из csv
           </Button>
