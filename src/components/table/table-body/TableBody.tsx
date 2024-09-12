@@ -17,6 +17,10 @@ import {
   type TableBodyProps,
 } from './types';
 
+function isIntegerWithoutDotAtEnd(value: string) {
+  return /^-?\d+$/.test(value);
+}
+
 const EditableContext = createContext<FormInstance<FormValues> | null>(null);
 
 // EditableRow for managing form context
@@ -78,22 +82,37 @@ const EditableCell = ({
   if (editable) {
     // Определение правил валидации для числовых полей
     const validationRules =
-      dataIndex === 'available' || dataIndex === 'inTransit'
+      dataIndex === 'barcode' ||
+      dataIndex === 'available' ||
+      dataIndex === 'inTransit'
         ? ([
             {
               required: true,
               message: `Поле "${title}" обязательно.`,
             },
             {
-              type: 'number',
-              transform: (value) => Number(value),
-              message: `Поле "${title}" должно быть числом.`,
+              validator: (_, value) => {
+                if (!value) {
+                  return Promise.reject('Это поле обязательно');
+                }
+                const numberValue = Number(value);
+                if (
+                  Number.isInteger(numberValue) &&
+                  numberValue > 0 &&
+                  isIntegerWithoutDotAtEnd(value)
+                ) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  `Поле "${title}" должно быть положительным целым числом.`
+                );
+              },
             },
           ] as Rule[])
         : ([
             {
               required: true,
-              message: `${title} is required.`,
+              message: `Поле "${title}" обязательно.`,
             },
           ] as Rule[]);
 
@@ -153,7 +172,6 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
     {
       title: 'Размер',
       dataIndex: 'size',
-      editable: true,
       sorter: (a: Column, b: Column) => a.size.localeCompare(b.size),
       sortDirections: ['descend'],
     },
@@ -165,12 +183,7 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
       sortDirections: ['descend'],
     },
     {
-      title: (
-        <span>
-          <span>Товары в пути</span>
-          <span className={styles.grayText}> (заказы и возвраты)</span>
-        </span>
-      ),
+      title: 'Товары в пути (заказы и возвраты)',
       dataIndex: 'inTransit',
       editable: true,
       sorter: (a: Column, b: Column) => a.inTransit - b.inTransit,
