@@ -108,7 +108,6 @@ export default function Table() {
         <TableBody
           dataSource={filteredDataSource}
           setDataSource={setDataSource}
-          setToggleFiltering={setToggleFiltering}
         />
       )}
     </div>
