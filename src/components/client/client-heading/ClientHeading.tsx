@@ -3,8 +3,6 @@ import { CgProfile } from 'react-icons/cg';
 import styles from './ClientHeading.module.css';
 import Heading from '../../heading/Heading';
 import Button from '../../button/Button';
-import { ButtonStyle, ButtonSize } from '../../button/types';
-import { NumberEnum } from '../../../utils/types';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -18,28 +16,25 @@ export default function ClientHeading() {
           </div>
           {'\u00A0'}
           <div>
-            <Heading
-              className={styles.headingClientName}
-              level={NumberEnum.Three}
-            >
+            <Heading className={styles.headingClientName} level={'3'}>
               Иванов И. И.
             </Heading>
           </div>
           <div className={styles.btnMargin}>
-            <Button size={ButtonSize.Large} styleType={ButtonStyle.Info}>
+            <Button size={'large'} styleType={'info'}>
               <FaCalendarAlt className={styles.calendar} />
               <span>Тариф до 15.04.2024</span>
             </Button>
           </div>
         </div>
         <div className={styles.logout}>
-          <Button size={ButtonSize.Medium} styleType={ButtonStyle.Outline}>
+          <Button size={'medium'} styleType={'outline'}>
             <span>Выйти</span>
           </Button>
           <Button
             rightIcon={<FaArrowRight className={styles.rightArrow} />}
-            size={ButtonSize.Medium}
-            styleType={ButtonStyle.Warning}
+            size={'medium'}
+            styleType={'warning'}
           >
             <span>О нас</span>
           </Button>

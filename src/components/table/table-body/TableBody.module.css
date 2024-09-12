@@ -3,3 +3,8 @@
   max-width: calc(20 * 40px);
   overflow: auto;
 }
+
+.grayText {
+  color: gray;
+  font-weight: normal;
+}

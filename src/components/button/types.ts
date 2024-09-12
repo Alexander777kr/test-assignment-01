@@ -1,17 +1,16 @@
-export enum ButtonStyle {
-  Primary = 'primary',
-  Warning = 'warning',
-  Outline = 'outline',
-  Ghost = 'ghost',
-  Dark = 'dark',
-  Info = 'info',
-  Badge = 'badge'
+import {ReactNode} from 'react';
+
+export interface ButtonProps {
+  onClick?: () => void;
+  styleType: ButtonStyle;
+  size: ButtonSize;
+  className?: string;
+  children: ReactNode;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 
-export enum ButtonSize {
-  ExtraLarge = 'extraLarge',
-  Large = 'large',
-  MediumLarge = 'mediumLarge',
-  Medium = 'medium',
-  Small = 'small',
-}
+export type ButtonStyle = 'primary' | 'warning' | 
+'outline' | 'ghost' | 'dark' | 'info' | 'badge';
+
+export type ButtonSize = 'extraLarge' | 'large' | 'mediumLarge' | 'medium' | 'small';

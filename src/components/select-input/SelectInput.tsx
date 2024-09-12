@@ -3,13 +3,22 @@ import styles from './SelectInput.module.css';
 interface SelectInputProps {
   defaultValue?: string;
   value?: string;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  id?: string;
 }
+
+export const selectData = [
+  { id: 1, value: '', label: 'Все категории' },
+  { id: 2, value: 'Одежда', label: 'Одежда' },
+  { id: 3, value: 'Обувь', label: 'Обувь' },
+  { id: 4, value: 'Аксессуары', label: 'Аксессуары' },
+];
 
 export default function SelectInput({
   defaultValue,
   value,
   onChange,
+  id,
 }: SelectInputProps) {
   return (
     <select
@@ -17,11 +26,13 @@ export default function SelectInput({
       defaultValue={defaultValue}
       value={value}
       onChange={onChange}
+      id={id}
     >
-      <option value="someOption">Джинсы</option>
-      <option value="otherOption">Кардиган</option>
-      <option value="otherOption">Брюки</option>
-      <option value="otherOption">Брюки1</option>
+      {selectData.map((item) => (
+        <option key={item.id} value={item.value}>
+          {item.label}
+        </option>
+      ))}
     </select>
   );
 }

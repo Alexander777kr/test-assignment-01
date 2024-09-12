@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import styles from './Accordion.module.css';
 
 interface AccordionProps {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 const Accordion = ({ icon, title, content }: AccordionProps) => {
@@ -16,12 +16,12 @@ const Accordion = ({ icon, title, content }: AccordionProps) => {
 
   return (
     <div className={styles.accordion}>
-      <div className={styles.accordionHeader} onClick={toggleAccordion}>
-        <span className={styles.accordionIcon}>{icon}</span>
-        <span className={styles.accordionTitle}>{title}</span>
-        <button className={styles.accordionToggle}>{isOpen ? '▲' : '▼'}</button>
+      <div className={styles.header} onClick={toggleAccordion}>
+        <span className={styles.icon}>{icon}</span>
+        <span className={styles.title}>{title}</span>
+        <button className={styles.toggle}>{isOpen ? '▲' : '▼'}</button>
       </div>
-      {isOpen && <div className={styles.accordionContent}>{content}</div>}
+      {isOpen && <div className={styles.content}>{content}</div>}
     </div>
   );
 };

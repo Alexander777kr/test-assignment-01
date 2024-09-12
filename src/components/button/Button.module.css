@@ -10,25 +10,35 @@
   margin-bottom: 10px;
 }
 
-.btnLarge {
+.extraLarge {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  justify-content: center;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 15px;
+  margin-top: 5px;
+}
+
+.large {
   padding: 20px;
   font-size: 18px;
   border-radius: 15px;
 }
 
-.btnMedium {
+.medium {
   padding: 8px 12px;
   font-size: 12px;
   border-radius: 20px;
 }
 
-.btnMediumLarge {
+.mediumLarge {
   padding: 14px 12px;
   font-size: 12px;
   border-radius: 20px;
 }
 
-.btnSmall {
+.small {
   padding: 5px 10px;
   font-size: 10px;
   width: 25%;

@@ -1,6 +1,6 @@
 .leftColumn {
   width: 300px;
-  background-color: #4bdf3d;
+  background-color: #f0f1f3;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
@@ -44,4 +44,9 @@
 
 .fullWidth {
   grid-column: span 2;
+}
+
+.messageIcon {
+  font-size: 14px;
+  margin-right: 5px;
 }

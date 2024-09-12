@@ -4,6 +4,7 @@
   align-items: center;
   align-content: stretch;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .options {
@@ -62,7 +63,7 @@
   border-top: 1px solid #dbdfe2;
   border-bottom: 1px solid #dbdfe2;
   justify-content: space-between;
-  width: 85%;
+  max-width: 90%;
 }
 
 .uploadIcons {

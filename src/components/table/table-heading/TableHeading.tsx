@@ -1,7 +1,5 @@
 import Heading from '../../heading/Heading';
 import Button from '../../button/Button';
-import { ButtonStyle, ButtonSize } from '../../button/types';
-import { NumberEnum } from '../../../utils/types';
 import styles from './TableHeading.module.css';
 import { FaBook } from 'react-icons/fa';
 import Card from '../../card/Card';
@@ -11,26 +9,50 @@ import { CgExport } from 'react-icons/cg';
 import { RiFileUploadFill } from 'react-icons/ri';
 import { MdAssignmentAdd } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
+import { useState } from 'react';
+
+type FilterFields = {
+  barcode: string;
+  articleNumber: string;
+  size: string;
+  category: string;
+};
 
 interface TableHeading {
   loadDataFromJSON: () => void;
   exportToCSV: () => void;
+  setFilterFields: React.Dispatch<React.SetStateAction<FilterFields>>;
 }
 
 export default function TableHeading({
   loadDataFromJSON,
   exportToCSV,
+  setFilterFields,
 }: TableHeading) {
+  const [barcode, setBarcode] = useState('');
+  const [articleNumber, setArticleNumber] = useState('');
+  const [size, setSize] = useState('');
+  const [category, setCategory] = useState('');
+
+  function formTable() {
+    setFilterFields({
+      barcode,
+      articleNumber,
+      size,
+      category,
+    });
+  }
+
   return (
     <header>
       <div className={styles.header}>
-        <Heading level={NumberEnum.One} className={styles.headingOne}>
+        <Heading level={'1'} className={styles.headingOne}>
           Остатки сформированы на 01.04.2023 г.
         </Heading>
         <Button
           leftIcon={<FaBook className={styles.faBook} />}
-          styleType={ButtonStyle.Dark}
-          size={ButtonSize.Medium}
+          styleType={'dark'}
+          size={'medium'}
           className={styles.instructions}
         >
           Инструкции
@@ -45,7 +67,14 @@ export default function TableHeading({
             Баркод
           </label>
           <span>
-            <Input id="barcode" placeholder="5643242134323099" />
+            <Input
+              id="barcode"
+              placeholder="5643242134323099"
+              value={barcode}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBarcode(e.target.value)
+              }
+            />
           </span>
         </Card>
         <Card
@@ -56,7 +85,14 @@ export default function TableHeading({
             Артикул
           </label>
           <span>
-            <Input id="articleNumber" placeholder="ДжЖСинМом0823" />
+            <Input
+              id="articleNumber"
+              placeholder="Кроссовки"
+              value={articleNumber}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setArticleNumber(e.target.value)
+              }
+            />
           </span>
         </Card>
         <Card
@@ -67,26 +103,39 @@ export default function TableHeading({
             Размер
           </label>
           <span>
-            <Input id="size" placeholder="44" />
+            <Input
+              id="size"
+              placeholder="44"
+              value={size}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSize(e.target.value)
+              }
+            />
           </span>
         </Card>
         <Card className={`${styles.cardCategory}`} mainLayout={true}>
-          <label className={styles.categoryLabel} htmlFor="size">
+          <label className={styles.categoryLabel} htmlFor="category">
             Категория
           </label>
           <span>
-            <SelectInput defaultValue="Джинсы" />
+            <SelectInput
+              id="category"
+              value={category}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setCategory(e.target.value)
+              }
+            />
           </span>
         </Card>
       </div>
       <div className={styles.header}>
-        <Button styleType={ButtonStyle.Primary} size={ButtonSize.MediumLarge}>
+        <Button onClick={formTable} styleType={'primary'} size={'mediumLarge'}>
           Сформировать
         </Button>
         <Button
           leftIcon={<CgExport className={styles.exportIcon} />}
-          styleType={ButtonStyle.Dark}
-          size={ButtonSize.MediumLarge}
+          styleType={'dark'}
+          size={'mediumLarge'}
           onClick={exportToCSV}
         >
           Экспорт
@@ -96,16 +145,16 @@ export default function TableHeading({
         <div className={styles.options}>
           <Button
             leftIcon={<RiFileUploadFill className={styles.uploadIcons} />}
-            styleType={ButtonStyle.Ghost}
-            size={ButtonSize.Medium}
+            styleType={'ghost'}
+            size={'medium'}
             onClick={loadDataFromJSON}
           >
             Загрузить данные из csv
           </Button>
           <Button
             leftIcon={<MdAssignmentAdd className={styles.uploadIcons} />}
-            styleType={ButtonStyle.Ghost}
-            size={ButtonSize.Medium}
+            styleType={'ghost'}
+            size={'medium'}
           >
             Изменить данные
           </Button>
@@ -113,10 +162,10 @@ export default function TableHeading({
         <div className={styles.options}>
           <Button
             rightIcon={<RxCross2 className={styles.uploadIcons} />}
-            styleType={ButtonStyle.Ghost}
-            size={ButtonSize.Medium}
+            styleType={'ghost'}
+            size={'medium'}
           >
-            Изменить данные
+            Очистить
           </Button>
         </div>
       </div>

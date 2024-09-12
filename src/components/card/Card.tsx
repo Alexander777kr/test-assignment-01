@@ -1,17 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState, ReactNode, HTMLProps } from 'react';
 import Heading from '../heading/Heading';
 import Button from '../button/Button';
-import { ButtonStyle, ButtonSize } from '../button/types';
 import { CiCircleRemove } from 'react-icons/ci';
 import styles from './Card.module.css';
-import { NumberEnum } from '../../utils/types';
+import { NumberOfHeadings } from '../../utils/types';
 
-interface CardProps extends React.HTMLProps<HTMLElement> {
-  level?: NumberEnum;
+interface CardProps extends HTMLProps<HTMLElement> {
+  level?: NumberOfHeadings;
   classNameHeading?: string;
-  headingText?: React.ReactElement | string;
-  children: React.ReactNode;
+  headingText?: ReactNode | string;
+  children: ReactNode;
   badge?: boolean;
   mainLayout?: boolean;
   className?: string | undefined;
@@ -47,8 +45,8 @@ export default function Card({
           {headingText}
           {badge && (
             <Button
-              styleType={ButtonStyle.Badge}
-              size={ButtonSize.Small}
+              styleType={'badge'}
+              size={'small'}
               rightIcon={<CiCircleRemove />}
               onClick={handleClick}
             >

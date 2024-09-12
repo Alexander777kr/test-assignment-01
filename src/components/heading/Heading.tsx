@@ -1,14 +1,14 @@
-import React from 'react';
-import { NumberEnum } from '../../utils/types';
+import { ReactNode } from 'react';
+import { NumberOfHeadings } from '../../utils/types';
 
 interface HeadingProps {
-  level?: NumberEnum;
-  children: React.ReactNode;
+  level?: NumberOfHeadings;
+  children: ReactNode;
   className?: string;
 }
 
 const Heading = ({
-  level = NumberEnum.One,
+  level = '1',
   children,
   className,
   ...props

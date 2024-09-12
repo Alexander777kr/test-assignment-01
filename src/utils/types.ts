@@ -1,8 +1,13 @@
-export enum NumberEnum {
-  One = '1',
-  Two = '2',
-  Three = '3',
-  Four = '4',
-  Five = '5',
-  Six = '6',
+export type NumberOfHeadings = '1' | '2' | '3' | '4' | '5' | '6';
+
+
+export interface Column {
+  key: string;
+  barcode: string;
+  item: string;
+  supplierCode: string;
+  size: string;
+  available: number;
+  inTransit: number;
+  total: number;
 }

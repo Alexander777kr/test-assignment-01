@@ -1,52 +1,23 @@
-import React, {
+import {
   LegacyRef,
   useContext,
   useEffect,
   useRef,
   useState,
+  ReactNode,
+  createContext,
 } from 'react';
 import { Form, FormInstance, Input, InputRef, Table } from 'antd';
 import styles from './TableBody.module.css';
 import { Rule } from 'antd/es/form';
+import { type Column } from '../../../utils/types';
+import {
+  type FormValues,
+  type EditableCellProps,
+  type TableBodyProps,
+} from './types';
 
-type Column = {
-  key: string;
-  barcode: string;
-  item: string;
-  supplierCode: string;
-  size: string;
-  available: number;
-  inTransit: number;
-  total: number;
-};
-
-interface FormValues {
-  barcode?: string;
-  item?: string;
-  supplierCode?: string;
-  size?: string;
-  available?: number;
-  inTransit?: number;
-  total?: number;
-}
-
-type EditableCellProps = {
-  title: string;
-  editable: boolean;
-  children: React.ReactNode;
-  dataIndex: string;
-  record: any;
-  handleSave: (row: Column) => void;
-} & React.HTMLAttributes<HTMLDivElement>;
-
-interface TableBodyProps {
-  dataSource: Column[];
-  setDataSource: React.Dispatch<React.SetStateAction<Column[]>>;
-}
-
-const EditableContext = React.createContext<FormInstance<FormValues> | null>(
-  null
-);
+const EditableContext = createContext<FormInstance<FormValues> | null>(null);
 
 // EditableRow for managing form context
 const EditableRow = ({ ...props }) => {
@@ -146,7 +117,7 @@ const EditableCell = ({
         style={{
           paddingInlineEnd: 24,
         }}
-        onClick={toggleEdit}
+        onDoubleClick={toggleEdit}
       >
         {children}
       </div>
@@ -194,7 +165,12 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
       sortDirections: ['descend'],
     },
     {
-      title: 'Товары в пути (заказы и возвраты)',
+      title: (
+        <span>
+          <span>Товары в пути</span>
+          <span className={styles.grayText}> (заказы и возвраты)</span>
+        </span>
+      ),
       dataIndex: 'inTransit',
       editable: true,
       sorter: (a: Column, b: Column) => a.inTransit - b.inTransit,
@@ -228,6 +204,13 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
   };
 
   const components = {
+    header: {
+      cell: (props: { children: ReactNode }) => (
+        <th {...props} style={{ textAlign: 'center' }}>
+          {props.children}
+        </th>
+      ),
+    },
     body: {
       row: EditableRow,
       cell: EditableCell,
@@ -267,6 +250,8 @@ const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
         locale={{
           emptyText:
             'Нет данных для отображения. Нажмите "Загрузить данные из csv"',
+          triggerDesc: 'Сортировать по убыванию',
+          cancelSort: 'Отмена сортировки',
         }}
         summary={() => (
           <Table.Summary.Row>

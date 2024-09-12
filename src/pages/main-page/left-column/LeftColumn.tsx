@@ -7,7 +7,8 @@ import { FaBook } from 'react-icons/fa';
 import styles from './LeftColumn.module.css';
 import TextWithLabel from '../../../components/text-with-label/TextWithLabel';
 import LinksInCard from '../../../components/links-in-card/LinksInCard';
-import { NumberEnum } from '../../../utils/types';
+import Button from '../../../components/button/Button';
+import { BiSolidMessageRoundedDots } from 'react-icons/bi';
 
 const accordionData = [
   {
@@ -40,7 +41,7 @@ export default function LeftColumn() {
   return (
     <div className={styles.leftColumn}>
       <Card
-        level={NumberEnum.One}
+        level={'1'}
         headingText={
           <div>
             <span className={styles.highlight}>ФИН</span> Контроль
@@ -61,7 +62,7 @@ export default function LeftColumn() {
         </div>
       </Card>
       <Card
-        level={NumberEnum.Two}
+        level={'2'}
         headingText="Техническая поддержка"
         classNameHeading={styles.headingTwo}
       >
@@ -83,6 +84,13 @@ export default function LeftColumn() {
           <LinksInCard />
         </>
       </Card>
+      <Button
+        leftIcon={<BiSolidMessageRoundedDots className={styles.messageIcon} />}
+        styleType="primary"
+        size="extraLarge"
+      >
+        Связаться с нами
+      </Button>
     </div>
   );
 }
