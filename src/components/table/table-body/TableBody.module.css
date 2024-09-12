@@ -4,6 +4,12 @@
   overflow: auto;
 }
 
+@media (max-width: 770px) {
+  .table {
+    max-height: none;
+  }
+}
+
 .grayText {
   color: gray;
   font-weight: normal;
