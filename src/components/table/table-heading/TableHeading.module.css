@@ -16,6 +16,13 @@
   gap: 10px;
 }
 
+@media (max-width: 500px) {
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .headingOne {
   font-size: 25px;
   font-weight: 500;
@@ -45,6 +52,12 @@
   width: fit-content;
 }
 
+@media (max-width: 500px) {
+  .cardWithInput {
+    width: 90%;
+  }
+}
+
 .spacing {
   margin-right: 10px;
 }
@@ -64,6 +77,13 @@
   border-bottom: 1px solid #dbdfe2;
   justify-content: space-between;
   max-width: 90%;
+}
+
+@media (max-width: 768px) {
+  .controlForm {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .uploadIcons {
