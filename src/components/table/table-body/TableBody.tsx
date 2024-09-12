@@ -42,7 +42,6 @@ const EditableCell = ({
   dataIndex,
   record,
   handleSave,
-  setToggleFiltering,
   ...restProps
 }: EditableCellProps) => {
   const [editing, setEditing] = useState(false);
@@ -72,15 +71,13 @@ const EditableCell = ({
         ...record,
         ...values,
       });
-      setToggleFiltering(false);
       toast.success('Ячейка изменена', {
         duration: 4000,
       });
-      toast.error("Для фильтрации результатов нажмите на 'Изменить данные'.", {
-        duration: 25000,
-      });
     } catch (errInfo) {
-      console.log('Save failed:', errInfo);
+      if (errInfo instanceof Error) {
+        toast.error('Ошибка сохранения ячейки. Код ошибки: ' + errInfo.message);
+      }
     }
   };
 
@@ -154,8 +151,8 @@ const EditableCell = ({
 
 const TableBody = ({
   dataSource,
+  filteredDataSource,
   setDataSource,
-  setToggleFiltering,
 }: TableBodyProps) => {
   const defaultColumns = [
     {
@@ -226,9 +223,7 @@ const TableBody = ({
     },
     body: {
       row: EditableRow,
-      cell: (props: EditableCellProps) => (
-        <EditableCell {...props} setToggleFiltering={setToggleFiltering} />
-      ),
+      cell: EditableCell,
     },
   };
 
@@ -249,7 +244,10 @@ const TableBody = ({
   });
 
   const getTotal = (field: keyof Column) => {
-    return dataSource.reduce((acc, curr) => acc + Number(curr[field]), 0);
+    return filteredDataSource.reduce(
+      (acc, curr) => acc + Number(curr[field]),
+      0
+    );
   };
 
   return (
@@ -258,7 +256,7 @@ const TableBody = ({
         components={components}
         rowClassName={() => 'editable-row'}
         bordered
-        dataSource={dataSource}
+        dataSource={filteredDataSource}
         columns={columns as any}
         pagination={false}
         locale={{

@@ -26,7 +26,6 @@ interface TableHeading {
   setFilterFields: Dispatch<React.SetStateAction<FilterFields>>;
   dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
-  toggleFiltering: boolean;
 }
 
 export default function TableHeading({
@@ -35,7 +34,6 @@ export default function TableHeading({
   setFilterFields,
   dataSource,
   setDataSource,
-  toggleFiltering,
 }: TableHeading) {
   const [barcode, setBarcode] = useState('');
   const [articleNumber, setArticleNumber] = useState('');
@@ -63,7 +61,7 @@ export default function TableHeading({
           }
         );
       } else {
-        toast.success('Данные в таблице отфильтрованы по критериям', {
+        toast.success('Данные в таблице отфильтрованы по выбранным критериям', {
           duration: 4000,
         });
       }
@@ -190,17 +188,7 @@ export default function TableHeading({
         </Card>
       </div>
       <div className={styles.header}>
-        <Button
-          disabled={!toggleFiltering}
-          title={
-            !toggleFiltering
-              ? 'Сохраните данные для продолжения фильтрации'
-              : undefined
-          }
-          onClick={formTable}
-          styleType={'primary'}
-          size={'mediumLarge'}
-        >
+        <Button onClick={formTable} styleType={'primary'} size={'mediumLarge'}>
           Сформировать
         </Button>
         <Button
