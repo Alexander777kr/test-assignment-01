@@ -155,11 +155,7 @@ const EditableCell = ({
   return <td {...restProps}>{childNode}</td>;
 };
 
-const TableBody = ({
-  dataSource,
-  setDataSource,
-  setToggleFiltering,
-}: TableBodyProps) => {
+const TableBody = ({ dataSource, setDataSource }: TableBodyProps) => {
   const defaultColumns = [
     {
       title: 'Баркод',
@@ -229,9 +225,7 @@ const TableBody = ({
     },
     body: {
       row: EditableRow,
-      cell: (props: EditableCellProps) => (
-        <EditableCell setToggleFiltering={setToggleFiltering} {...props} />
-      ),
+      cell: EditableCell,
     },
   };
 

@@ -25,5 +25,4 @@ export type EditableCellProps = {
 export interface TableBodyProps {
   dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
-  setToggleFiltering: Dispatch<SetStateAction<boolean>>;
 }
