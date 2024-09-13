@@ -95,9 +95,6 @@ const EditableCell = ({
             },
             {
               validator: (_, value) => {
-                if (!value) {
-                  return Promise.reject('Это поле обязательно');
-                }
                 const numberValue = Number(value);
                 if (
                   Number.isInteger(numberValue) &&
@@ -260,8 +257,7 @@ const TableBody = ({
         columns={columns as any}
         pagination={false}
         locale={{
-          emptyText:
-            'Нет данных для отображения. Нажмите "Загрузить данные из csv"',
+          emptyText: 'Нет данных для отображения',
           triggerAsc: 'Сортировать по возрастанию',
           triggerDesc: 'Сортировать по убыванию',
           cancelSort: 'Отмена сортировки',
