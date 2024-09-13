@@ -1,6 +1,5 @@
 .table {
   max-height: calc(7 * 40px);
-  max-width: calc(20 * 40px);
   overflow: auto;
 }
 

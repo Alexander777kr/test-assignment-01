@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: stretch;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@
 
 .options {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: stretch;
   flex-wrap: wrap;
@@ -76,7 +76,6 @@
   border-top: 1px solid #dbdfe2;
   border-bottom: 1px solid #dbdfe2;
   justify-content: space-between;
-  max-width: 90%;
 }
 
 @media (max-width: 768px) {

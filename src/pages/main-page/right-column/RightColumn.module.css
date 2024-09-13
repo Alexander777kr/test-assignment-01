@@ -1,6 +1,5 @@
 .rightColumn {
   flex-grow: 1;
-  max-width: 900px;
   background-color: #f0f1f3;
   overflow: auto;
   padding: 20px;
