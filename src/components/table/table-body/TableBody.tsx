@@ -267,10 +267,10 @@ const TableBody = ({
             <Table.Summary.Cell colSpan={5} index={1}>
               Итого:
             </Table.Summary.Cell>
-            <Table.Summary.Cell index={2}>
+            <Table.Summary.Cell className={styles.totalCells} index={2}>
               {getTotal('inTransit')}
             </Table.Summary.Cell>
-            <Table.Summary.Cell index={3}>
+            <Table.Summary.Cell className={styles.totalCells} index={3}>
               {getTotal('total')}
             </Table.Summary.Cell>
           </Table.Summary.Row>

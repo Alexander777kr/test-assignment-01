@@ -9,7 +9,7 @@ import { CgExport } from 'react-icons/cg';
 import { RiFileUploadFill } from 'react-icons/ri';
 import { MdAssignmentAdd } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, ChangeEvent } from 'react';
 import { type Column } from '../../../utils/types';
 import toast from 'react-hot-toast';
 
@@ -23,7 +23,7 @@ type FilterFields = {
 interface TableHeading {
   loadDataFromJSON: () => void;
   exportToCSV: () => void;
-  setFilterFields: Dispatch<React.SetStateAction<FilterFields>>;
+  setFilterFields: Dispatch<SetStateAction<FilterFields>>;
   dataSource: Column[];
   setDataSource: Dispatch<SetStateAction<Column[]>>;
 }
@@ -130,7 +130,7 @@ export default function TableHeading({
               id="barcode"
               placeholder="5643242134323099"
               value={barcode}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setBarcode(e.target.value)
               }
             />
@@ -148,7 +148,7 @@ export default function TableHeading({
               id="articleNumber"
               placeholder="Кроссовки"
               value={articleNumber}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setArticleNumber(e.target.value)
               }
             />
@@ -166,7 +166,7 @@ export default function TableHeading({
               id="size"
               placeholder="44"
               value={size}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setSize(e.target.value)
               }
             />
@@ -180,7 +180,7 @@ export default function TableHeading({
             <SelectInput
               id="category"
               value={category}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              onChange={(e: ChangeEvent<HTMLSelectElement>) =>
                 setCategory(e.target.value)
               }
             />

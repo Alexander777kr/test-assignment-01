@@ -1,9 +1,10 @@
+import { ChangeEvent } from 'react';
 import styles from './SelectInput.module.css';
 
 interface SelectInputProps {
   defaultValue?: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   id?: string;
 }
 

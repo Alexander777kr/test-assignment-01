@@ -1,10 +1,10 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, ChangeEvent, MutableRefObject } from 'react';
 import styles from './Input.module.css';
 
 interface InputProps {
   placeholder: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   id?: string;
 }
 
@@ -16,7 +16,7 @@ export default function Input({
 }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(
     null
-  ) as React.MutableRefObject<HTMLInputElement>;
+  ) as MutableRefObject<HTMLInputElement>;
 
   useEffect(() => {
     const el = inputRef.current;

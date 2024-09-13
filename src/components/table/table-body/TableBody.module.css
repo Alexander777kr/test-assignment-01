@@ -10,7 +10,7 @@
   }
 }
 
-.grayText {
-  color: gray;
-  font-weight: normal;
+.totalCells {
+  color: #7095d7;
+  font-size: 16px;
 }
