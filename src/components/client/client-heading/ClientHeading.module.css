@@ -5,7 +5,13 @@
   align-items: center;
   align-content: stretch;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 700px) {
+  .clientHeading {
+    padding: 20px;
+  }
 }
 
 .profileAvatar {
